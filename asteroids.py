@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Implémentation objet du jeu Asteroids.
+# Copyright (C) 2020 - Jérôme Kirman
+# Ce programme est un logiciel libre ; voir les fichiers README.md et LICENSE.
+
 # Modules requis
 from math import cos, sin, pi
 import random
