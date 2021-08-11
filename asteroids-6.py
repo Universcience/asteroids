@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Implémentation du jeu Asteroids : version complète.
+# Implémentation du jeu Asteroids : ajout tirs laser du vaisseau.
 # Copyright (C) 2020-2021 - Jérôme Kirman (Palais de la Découverte)
 # Ce programme est un logiciel libre ; voir les fichiers README.md et LICENSE.
 
 # Modules requis
-from math import cos, sin, pi, sqrt
-import random, sys
+from math import pi, cos, sin, sqrt
+import sys, random
 
 import pygame
 from pygame.locals import *
@@ -91,7 +91,7 @@ class Laser():
 		l.rect = (l.x, l.y, l.tx, l.ty)
 
 class Asteroide():
-	vang = 0
+	vang = hasard(20) - 10
 
 	x, y = 0, 0
 	vx, vy = 0, 0
@@ -121,7 +121,6 @@ for i in range(5):
 	a = Asteroide()
 	a.vx = hasard(16) - 8
 	a.vy = hasard(16) - 8
-	a.vang = hasard(10)-5
 	asteroides.append(a)
 
 # Fenêtre du jeu
@@ -156,36 +155,13 @@ while (True):
 	for l in joueur.tirs:
 		l.maj_laser()
 
-	# Destruction des objets
-	asteroides_detruits = []
-	lasers_perdus = []
-	for l in joueur.tirs:
-		for a in asteroides:
-			# Collision astéroïde/laser
-			if collision(l, a, 10):
-				asteroides_detruits.append(a)
-		# Sortie de l'écran d'un laser
-		if (l.x < 0 or l.x > XMAX
-		 or l.y < 0 or l.y > YMAX):
-			lasers_perdus.append(l)
-
-	# Suppression des objets détruits
-	for a in asteroides_detruits:
-		if a in asteroides:
-			asteroides.remove(a)
-	for l in lasers_perdus:
-		joueur.tirs.remove(l)
-
 	# Fin de partie ?
 	for a in asteroides:
 		if collision(joueur, a, 12):
 			quitter("Game over !")
 
-	if not asteroides:
-		quitter("Victoire !")
-
 	# DESSIN
-	fenetre.fill(pygame.Color(0,0,16))
+	fenetre.fill(pygame.Color(0,0,10))
 
 	fenetre.blit(joueur.img, joueur.rect)
 

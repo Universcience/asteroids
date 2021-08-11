@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Implémentation du jeu Asteroids : version complète.
+# Implémentation du jeu Asteroids : disparition des lasers et destruction des astéroïdes.
 # Copyright (C) 2020-2021 - Jérôme Kirman (Palais de la Découverte)
 # Ce programme est un logiciel libre ; voir les fichiers README.md et LICENSE.
 
 # Modules requis
-from math import cos, sin, pi, sqrt
-import random, sys
+from math import pi, cos, sin, sqrt
+import sys, random
 
 import pygame
 from pygame.locals import *
@@ -91,7 +91,7 @@ class Laser():
 		l.rect = (l.x, l.y, l.tx, l.ty)
 
 class Asteroide():
-	vang = 0
+	vang = hasard(20) - 10
 
 	x, y = 0, 0
 	vx, vy = 0, 0
@@ -121,7 +121,6 @@ for i in range(5):
 	a = Asteroide()
 	a.vx = hasard(16) - 8
 	a.vy = hasard(16) - 8
-	a.vang = hasard(10)-5
 	asteroides.append(a)
 
 # Fenêtre du jeu
@@ -185,7 +184,7 @@ while (True):
 		quitter("Victoire !")
 
 	# DESSIN
-	fenetre.fill(pygame.Color(0,0,16))
+	fenetre.fill(pygame.Color(0,0,10))
 
 	fenetre.blit(joueur.img, joueur.rect)
 

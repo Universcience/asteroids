@@ -1,6 +1,6 @@
 # `asteroids`
 
-Implémentation orientée-objet du jeu Asteroids, à visée pédagogique. Ce programme est écrit en langage [Python 3(fr)](https://fr.wikipedia.org/wiki/Python_%28langage%29) et nécessite la bibliothèque [pygame(en)](https://www.pygame.org/wiki/about).
+Implémentation objet progressive du jeu [Asteroids(fr)](https://fr.wikipedia.org/wiki/Asteroids), à visée pédagogique. Ce programme est écrit en langage [Python 3(fr)](https://fr.wikipedia.org/wiki/Python_%28langage%29) et nécessite la bibliothèque [pygame(en)](https://www.pygame.org/wiki/about).
 
 # Utilisation
 
